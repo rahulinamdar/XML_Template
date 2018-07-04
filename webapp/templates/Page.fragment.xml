@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap"
+	xmlns:layout="sap.ui.layout" xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+	<!--<Text text="Hello XML Template" />-->
+	<template:alias name=".AH" value="sap.ui.model.odata.AnnotationHelper">
+		<template:if test="{meta>com.sap.vocabularies.UI.v1.HeaderInfo}">
+			<template:with path="meta>com.sap.vocabularies.UI.v1.HeaderInfo" var="header">
+				<uxap:ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="false" busy="{viewModel>/busy}" busyIndicatorDelay="{viewModel>/delay}">
+					<uxap:headerTitle>
+						<uxap:ObjectPageHeader objectImageURI="sap-icon://sales-order" objectImageShape="Circle"
+							objectTitle="{path:'header>Title/Value',formatter: '.AH.format'}" objectSubtitle="{path:'header>Description/Value',formatter: '.AH.format'}"
+							objectImageAlt="Order" id="ObjectPageLayoutHeaderTitle">
+							<uxap:actions>
+								<template:with path="meta>com.sap.vocabularies.UI.v1.HeaderFacets#actions" var="headerActions">
+									<template:repeat list="{headerActions>}">
+										<template:with path="headerActions>Target" helper="sap.ui.model.odata.AnnotationHelper.resolvePath" var="target">
+											<template:repeat list="{target>}">
+												<uxap:ObjectPageHeaderActionButton text="{path:'target>Action',formatter:'.AH.format'}" type="Emphasized" hideIcon="false" hideText="false"
+													press="onClickAssign"/>
+											</template:repeat>
+										</template:with>
+									</template:repeat>
+								</template:with>
+							</uxap:actions>
+						</uxap:ObjectPageHeader>
+					</uxap:headerTitle>
+					<uxap:headerContent>
+						<template:with path="meta>com.sap.vocabularies.UI.v1.HeaderFacets" var="headerInfo">
+							<layout:VerticalLayout>
+								<layout:content>
+									<template:repeat list="{headerInfo>}">
+										<template:with path="headerInfo>Target" helper="sap.ui.model.odata.AnnotationHelper.resolvePath" var="target">
+											<template:if test="{target>LongDescription}" >
+												<template:then>
+													<ObjectStatus title="{path:'target>Title',formatter:'.AH.format'}" text="{path:'target>Value',formatter:'.AH.format'} ({path:'target>LongDescription',formatter:'.AH.format'})"/>
+												</template:then>
+												<template:else>
+													<ObjectStatus title="{path:'target>Title',formatter:'.AH.format'}" text="{path:'target>Value',formatter:'.AH.format'}"/>
+												</template:else>
+											</template:if>
+										</template:with>
+										<!--<ObjectStatus title="{/#Demand/Source/@sap:label}" text="{Source}"/>-->
+									</template:repeat>
+								</layout:content>
+							</layout:VerticalLayout>
+						</template:with>
+					</uxap:headerContent>
+					<uxap:sections>
+						<template:with path="meta>com.sap.vocabularies.UI.v1.Facets" var="sections">
+							<template:repeat list="{sections>}">
+								<uxap:ObjectPageSection title="{path:'sections>Label',formatter:'.AH.format'}">
+									<uxap:subSections>
+										<uxap:ObjectPageSubSection>
+											<uxap:blocks>
+												<template:if test="{sections>Facets}">
+													<template:then>
+														<template:with path="sections>Facets" var="facets">
+															<core:Fragment fragmentName="com.test.Demo.templates.FormTemplate" type="XML"/>
+														</template:with>
+													</template:then>
+													<template:else>
+														<Text text="{= ${sections>Org.OData.Core.V1.Description/String}}"/>
+													</template:else>
+												</template:if>
+											</uxap:blocks>
+										</uxap:ObjectPageSubSection>
+									</uxap:subSections>
+								</uxap:ObjectPageSection>
+							</template:repeat>
+						</template:with>
+					</uxap:sections>
+				</uxap:ObjectPageLayout>
+			</template:with>
+		</template:if>
+	</template:alias>
+</core:FragmentDefinition>

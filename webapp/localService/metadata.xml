@@ -1,0 +1,66 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_TIMELINE',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Timeline.v1"/>
+	</edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://ed1.evorait.net:50103/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.UI.v1"/>
+		<edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+		<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="COMMON"/>
+	</edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="com.test.Demo" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Order" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Guid"/>
+				</Key>
+				<Property Name="OrderId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Order ID"/>
+				<Property Name="Guid" Type="Edm.String" Nullable="false"  MaxLength="32" sap:label="Guid"/>
+				<Property Name="OrderDesc" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Description"/>
+				<Property Name="BookingDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Booking Date"/>
+				<Property Name="PersonalNumber" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Personal Number"/>
+				<Property Name="Firstname" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Firstname"/>
+				<Property Name="Lastname" Type="Edm.String" MaxLength="15" sap:label="Lastname"/>
+				<Property Name="ProductID" Type="Edm.String" MaxLength="15" sap:label="Product Id"/>
+				<Property Name="ProductDesc" Type="Edm.String" MaxLength="15" sap:label="Product Description"/>
+				<Property Name="DeliveryDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Delivery Date"/>
+				<Property Name="Supplier" Type="Edm.String" MaxLength="8" Nullable="false" sap:label="Supplier"/>
+				<Property Name="SupplierDesc" Type="Edm.String" Nullable="false" sap:label="Supplier Description"/>
+				<Property Name="BookingTime" Type="Edm.Time" sap:label="Booking Time"/>
+				<Property Name="Unit" Type="Edm.String" sap:label="Einheit" sap:semantics="unit-of-measure"/>
+				<Property Name="Status" Type="Edm.String" MaxLength="4" sap:label="Status"/>
+				<Property Name="StatusDesc" Type="Edm.String" MaxLength="10" sap:label="Status"/>
+				<Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="1" sap:label="Price" sap:unit="Unit"/>
+			</EntityType>
+			<EntityContainer Name="com_evorait_evotime_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="Orders" EntityType="com.test.Demo.Order" sap:content-version="1"/>
+			</EntityContainer>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="https://ed1.evorait.net:50103/sap/opu/odata/EVORA/EP_MAIN_SRV/$metadata"/>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://ed1.evorait.net:50103/sap/opu/odata/EVORA/EP_MAIN_SRV/$metadata"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

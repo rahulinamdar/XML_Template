@@ -1,0 +1,32 @@
+<mvc:View controllerName="com.test.Demo.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable">
+			<Page title="{i18n>title}">
+				<content>
+					<smartTable:SmartTable
+                        id="idOrderList"
+                        height="100%"
+                        width="100%"
+                        direction="Column"
+                        tableType="ResponsiveTable"
+                        fitContainer="true"
+                        enableAutoBinding="true"
+                        entitySet="Orders"
+                        showRowCount="true"
+                        header="Orders"
+                        useExportToExcel="true"
+                        useVariantManagement="true"
+                        persistencyKey="OrderTable_Pkey"
+                        useTablePersonalisation="true"
+                        beforeExport="onBeforeExport"
+                        requestAtLeastFields="Guid">
+                    <!-- layout data used to make the table growing but the filter bar fixed -->
+                    <smartTable:layoutData>
+                        <FlexItemData growFactor="1" />
+                    </smartTable:layoutData>
+                    <Table sticky="ColumnHeaders" itemPress="onItemPress">
+                    	<ColumnListItem type="Navigation" />
+                    </Table>
+                </smartTable:SmartTable>
+				</content>
+			</Page>
+</mvc:View>

@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:layout="sap.ui.layout"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+	<smartForm:SmartForm>
+		<smartForm:layout>
+			<smartForm:Layout labelSpanXL="3" labelSpanL="4" labelSpanM="6" labelSpanS="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+				columnsXL="2" columnsL="2" columnsM="1"></smartForm:Layout>
+		</smartForm:layout>
+		<template:repeat list="{facets>}">
+			<template:with path="facets>Target" helper="sap.ui.model.odata.AnnotationHelper.resolvePath" var="target">
+				<smartForm:Group label="{path:'target>Label',formatter:'.AH.format'}">
+					<template:with path="target>Data" var="data">
+						<template:repeat list="{data>}">
+							<smartForm:GroupElement>
+								<smartField:SmartField value="{path:'data>Value',formatter:'.AH.format'}"/>
+							</smartForm:GroupElement>
+						</template:repeat>
+					</template:with>
+				</smartForm:Group>
+			</template:with>
+		</template:repeat>
+	</smartForm:SmartForm>
+</core:FragmentDefinition>
