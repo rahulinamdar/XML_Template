@@ -12,7 +12,7 @@
 					<template:with path="target>Data" var="data">
 						<template:repeat list="{data>}">
 							<smartForm:GroupElement>
-								<smartField:SmartField value="{path:'data>Value',formatter:'.AH.format'}"/>
+								<smartField:SmartField value="{path:'data>Value',formatter:'.AH.simplePath'}"/>
 							</smartForm:GroupElement>
 						</template:repeat>
 					</template:with>
