@@ -203,6 +203,40 @@
 						</Record>
 					</Collection>
 				</Annotation>
+				<Annotation Term="com.sap.vocabularies.UI.v1.LineItem" Qualifier="StatusActions">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.DataFieldWithAction">
+							<PropertyValue Property="Action" String="APPROVE"/>
+							<PropertyValue Property="Value" Path="ALLOW_APPROVE"/>
+							<PropertyValue Property="Label" String="Approve"/>
+							<PropertyValue Property="IconUrl" String="sap-icon://accept"/>
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataFieldWithAction">
+							<PropertyValue Property="Action" String="ARCHIVE"/>
+							<PropertyValue Property="Value" Path="ALLOW_ARCHIVE"/>
+							<PropertyValue Property="Label" String="Archive"/>
+							<PropertyValue Property="IconUrl" String="sap-icon://sap-box"/>
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataFieldWithAction">
+							<PropertyValue Property="Action" String="REAPPROVE"/>
+							<PropertyValue Property="Value" Path="ALLOW_REAPPROVE"/>
+							<PropertyValue Property="Label" String="Re-Approve"/>
+							<PropertyValue Property="IconUrl" String="sap-icon://accept"/>
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataFieldWithAction">
+							<PropertyValue Property="Action" String="REBOOK"/>
+							<PropertyValue Property="Value" Path="ALLOW_REBOOK"/>
+							<PropertyValue Property="Label" String="Re-Book"/>
+							<PropertyValue Property="IconUrl" String="sap-icon://repost"/>
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataFieldWithAction">
+							<PropertyValue Property="Action" String="REJECT"/>
+							<PropertyValue Property="Value" Path="ALLOW_REJECT"/>
+							<PropertyValue Property="Label" String="Reject"/>
+							<PropertyValue Property="IconUrl" String="sap-icon://decline"/>
+						</Record>
+					</Collection>
+				</Annotation>
 			</Annotations>
 		</Schema>
 	</edmx:DataServices>

@@ -13,14 +13,18 @@
 					<uxap:headerTitle>
 						<uxap:ObjectPageHeader objectImageURI="sap-icon://sales-order" objectImageShape="Circle"
 							objectTitle="{path:'header>Title/Value',formatter: '.AH.format'}" objectSubtitle="{path:'header>Description/Value',formatter: '.AH.format'}"
-							objectImageAlt="Order" id="ObjectPageLayoutHeaderTitle">
+							objectImageAlt="Time Approval" id="ObjectPageLayoutHeaderTitle">
 							<uxap:actions>
 								<template:with path="meta>com.sap.vocabularies.UI.v1.HeaderFacets#actions" var="headerActions">
 									<template:repeat list="{headerActions>}">
 										<template:with path="headerActions>Target" helper="sap.ui.model.odata.AnnotationHelper.resolvePath" var="target">
 											<template:repeat list="{target>}">
 												<uxap:ObjectPageHeaderActionButton text="{path:'target>Action',formatter:'.AH.format'}" type="Emphasized" hideIcon="false" hideText="false"
-													press="onClickAssign"/>
+													press="onClickAssign">
+													<uxap:dependents>
+														<core:Fragment fragmentName="com.test.Demo.templates.ActionSheetTemplate" type="XML"/>
+													</uxap:dependents>
+												</uxap:ObjectPageHeaderActionButton>
 											</template:repeat>
 										</template:with>
 									</template:repeat>

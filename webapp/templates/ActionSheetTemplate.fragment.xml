@@ -1,0 +1,24 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+	
+	<template:alias name=".AH" value="sap.ui.model.odata.AnnotationHelper">
+		<template:if test="{meta>com.sap.vocabularies.UI.v1.LineItem#StatusActions}">
+			<template:with path="meta>com.sap.vocabularies.UI.v1.LineItem#StatusActions" var="actions">
+				<ActionSheet placement="VerticalPreferedBottom">
+					<buttons>
+						<template:repeat list="{actions>}">
+							<Button icon="{path:'actions>IconUrl',formatter:'.AH.format'}" text="{path:'actions>Label',formatter:'.AH.format'}" press="onClickStatus"
+								visible="{path:'actions>Value',formatter:'.AH.format'}">
+								<customData>
+                					<core:CustomData key="Function" value="{path:'actions>Action',formatter:'.AH.format'}" />
+                				</customData>
+							</Button>
+						</template:repeat>
+					</buttons>
+				</ActionSheet>
+			</template:with>
+		</template:if>
+	</template:alias>
+</core:FragmentDefinition>

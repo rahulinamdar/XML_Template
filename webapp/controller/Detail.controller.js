@@ -71,6 +71,10 @@ sap.ui.define([
 			}
 		},
 		
+		onClickAssign:function(oEvent){
+			oEvent.getSource().getDependents()[0].openBy(oEvent.getSource());
+		},
+		
 		/* =========================================================== */
 			/* event handlers                                              */
 			/* =========================================================== */
